@@ -1,11 +1,15 @@
 import React from "react";
 import { Button } from "./components/ui/button";
+import { Route, Routes } from "react-router";
+import Auth from "./pages/Auth/Auth";
 
 function App() {
 
   return (
     <>
-    <Button>Apply</Button>
+      <Routes>
+        <Route path="/auth" element={<Auth/>} />
+      </Routes>
     </>
   )
 }
