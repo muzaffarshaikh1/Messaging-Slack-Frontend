@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState } from 'react'
 import SigninCard from './SigninCard';
 import { useSignin } from '@/hooks/apis/auth/useSignin';
 import { useNavigate } from 'react-router';
+import { useAuth } from '@/hooks/apis/auth/context/useAuth';
 
 const SigninContainer = () => {
     const [signinForm, setSigninForm] = useState({
         email: '',
         password: '',
     });
+    const userData = useAuth();
+
+    useEffect(() => {
+        console.log("userData:",userData);
+    }, [userData])
+    
 
     const navigate = useNavigate()
 

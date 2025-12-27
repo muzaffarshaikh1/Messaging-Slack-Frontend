@@ -5,8 +5,14 @@ import { toast } from "sonner";
 export const useSignin = () => {
         const { isPending, isSuccess, error, mutateAsync: signinMutation} = useMutation({
         mutationFn: signInRequest,
-        onSuccess: (data) => {
-            console.log("user signed in successfully!", data);
+        onSuccess: (response) => {
+            console.log("user signed in successfully!", response);
+
+            const userData = JSON.stringify(response.data);
+
+            localStorage.setItem('user',userData);
+            localStorage.setItem('token',response.data.token);
+
             toast.success("Successfully signed in");
         },
         onError: (error) => {
