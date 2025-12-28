@@ -7,7 +7,7 @@ export const createWorkspaceRequest = async ({ name, description, token }) => {
                 'x-access-token': token
             }
         });
-        return response?.data;
+        return response?.data?.data;
     } catch (error) {
         console.log("error in createWorkspaceRequest", error);
         throw error.response.data;
