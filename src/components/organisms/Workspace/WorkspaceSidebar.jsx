@@ -10,7 +10,7 @@ const WorkspaceSidebar = () => {
         <SidebarButton Icon={MessageSquareIcon} label={'DMs'} />
         <SidebarButton Icon={BellIcon} label={'Notifications'} />
         <SidebarButton Icon={MoreHorizontalIcon} label={'More'} />
-        <div className="flex flex-col justify-center items-center mt-auto gap-y-1">
+        <div className="flex flex-col justify-center items-center mt-auto gap-y-1 pb-5">
             <UserButton/>
         </div>
     </aside>
