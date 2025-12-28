@@ -1,10 +1,10 @@
 import UserButton from '@/components/atoms/UserButton/UserButton'
-import { useFetchWorkspace } from '@/hooks/apis/workspace/useFetchWorkspaces'
+import { useFetchWorkspaces } from '@/hooks/apis/workspace/useFetchWorkspaces'
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router';
 
 const Home = () => {
-  const {isFetching,workspaces} = useFetchWorkspace();
+  const {isFetching,workspaces} = useFetchWorkspaces();
 
   const navigate = useNavigate();
   
