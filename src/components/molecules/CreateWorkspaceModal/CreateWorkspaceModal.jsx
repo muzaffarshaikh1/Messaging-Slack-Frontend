@@ -25,6 +25,7 @@ const CreateWorkspaceModal = () => {
 
         if(!workspaceName){
             console.log("Workspace name is required!")
+            return;
         }
 
         try {

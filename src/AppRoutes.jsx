@@ -6,6 +6,7 @@ import { NotFound } from '@/components/organisms/Auth/NotFound'
 import { Route, Routes } from 'react-router'
 import ProtectedRoute from './components/molecules/ProctectedRoute/ProtectedRoute'
 import Home from './pages/Home/Home'
+import { WorkspaceLayout } from './pages/Workspace/Layout'
 
 const AppRoutes = () => {
     return (
@@ -13,6 +14,7 @@ const AppRoutes = () => {
             <Route path="/auth/signin" element={<Auth><SigninContainer /></Auth>} />
             <Route path="/auth/signup" element={<Auth><SignupContainer /></Auth>} />
             <Route path="/home" element={<ProtectedRoute><Home/></ProtectedRoute>} />
+            <Route path="/workspaces/:workspaceId" element={<ProtectedRoute><WorkspaceLayout>Workspace</WorkspaceLayout></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />
         </Routes>
     )

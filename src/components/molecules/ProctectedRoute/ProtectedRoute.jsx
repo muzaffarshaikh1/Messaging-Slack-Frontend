@@ -14,7 +14,7 @@ const ProtectedRoute = ({children}) => {
         return <Navigate to='/auth/signin' />
     }
   
-    return <>{children}</>
+    return children;
 }
 
 export default ProtectedRoute
