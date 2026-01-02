@@ -2,6 +2,7 @@ import { useDefaultLayout } from "react-resizable-panels"
 import WorkspaceNavbar from "@/components/organisms/Workspace/WorkspaceNavbar"
 import WorkspaceSidebar from "@/components/organisms/Workspace/WorkspaceSidebar"
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable"
+import WorkspacePanel from "@/components/organisms/Workspace/WorkspacePanel"
 
 export const WorkspaceLayout = ({ children }) => {
   const { defaultLayout, onLayoutChange } = useDefaultLayout({
@@ -32,7 +33,7 @@ export const WorkspaceLayout = ({ children }) => {
             className="bg-slack-medium"
           >
             <div className="">
-              sidebar
+              <WorkspacePanel/>
             </div>
           </ResizablePanel>
           <ResizableHandle withHandle />
