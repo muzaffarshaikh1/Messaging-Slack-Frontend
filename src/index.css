@@ -24,6 +24,7 @@
   --color-muted: var(--muted);
   --color-slack:#5c3B58;
   --color-slack-dark:#481349;
+  --color-slack-medium:#5E2C5F;
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);

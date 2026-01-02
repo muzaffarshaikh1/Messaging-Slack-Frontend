@@ -16,7 +16,7 @@ export const NotFound = () => {
                 </CardHeader>
                 <CardContent>
                     <img className='rounded-lg' src='https://www.digitalmesh.com/blog/wp-content/uploads/2020/05/404-error.jpg' />
-                    <Button
+                    <Button asChild
                         variant='outline'
                         className='mt-4'
                         onClick={()=>navigate(-1)}
