@@ -3,7 +3,8 @@ import { useAuth } from "../auth/context/useAuth";
 import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
 
-export const useUpdateRequest = (workspaceId) => {
+export const useUpdateWorkpace = (workspaceId) => {
+    console.log("useUpdateWorkpace:",workspaceId)
     const { auth } = useAuth();
     const { isPending, isSuccess, error, mutateAsync: updateWorkspaceMutation } = useMutation({
         mutationFn: (name) => updateWorkspaceRequest({ workspaceId,name, token: auth?.token }),
