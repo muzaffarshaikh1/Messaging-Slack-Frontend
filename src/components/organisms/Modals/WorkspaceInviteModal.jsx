@@ -5,26 +5,26 @@ import { CopyIcon, RefreshCcwIcon } from 'lucide-react'
 import React from 'react'
 import { toast } from 'sonner'
 
-export const WorkspaceInviteModal = ({ openInviteModal, setOpenInviteModal, workspaceName,workspaceId, joinCode }) => {
-    
-    const {resetJoinCodeMutation} = useResetJoincode(workspaceId)
+export const WorkspaceInviteModal = ({ openInviteModal, setOpenInviteModal, workspaceName, workspaceId, joinCode }) => {
+
+    const { resetJoinCodeMutation } = useResetJoincode(workspaceId)
 
     async function handleCopy() {
-        const inviteLink = `${window.location.origin}/join/${joinCode}`;
+        const inviteLink = `${joinCode}`;
         await navigator.clipboard.writeText(inviteLink);
         toast.success('Link copied to clipboard');
     }
 
-    function handleClose(){
+    function handleClose() {
         setOpenInviteModal(false)
-    } 
+    }
 
     async function handleResetCode() {
         try {
             await resetJoinCodeMutation();
             // handleClose();
         } catch (error) {
-            console.log("error while reset the joincode:",error)
+            console.log("error while reset the joincode:", error)
         }
     }
 
@@ -43,6 +43,14 @@ export const WorkspaceInviteModal = ({ openInviteModal, setOpenInviteModal, work
                         Copy Link
                         <CopyIcon className='size-4 ml-2' />
                     </Button>
+                    <a
+                        href={`/workspaces/join/${workspaceId}`}
+                        target='_blank'
+                        rel='noreferer'
+                        className='text-blue-500'
+                    >
+                        Redirect to join page
+                    </a>
                 </div>
                 <div className="flex justify-center items-center w-full">
                     <Button variant='outline' onClick={handleResetCode}>

@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router'
 import ProtectedRoute from './components/molecules/ProctectedRoute/ProtectedRoute'
 import Home from './pages/Home/Home'
 import { WorkspaceLayout } from './pages/Workspace/Layout'
+import { JoinPage } from './pages/Workspace/JoinPage'
 
 const AppRoutes = () => {
     return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
             path='/workspaces/:workspaceId/channels/:channelId'
             element={<ProtectedRoute>channel</ProtectedRoute>}
             />
+            <Route path="/workspaces/join/:workspaceId" element={<JoinPage/>} />
             <Route path="*" element={<NotFound />} />
         </Routes>
     )
