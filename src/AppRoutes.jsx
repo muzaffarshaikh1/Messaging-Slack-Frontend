@@ -8,7 +8,7 @@ import ProtectedRoute from './components/molecules/ProctectedRoute/ProtectedRout
 import Home from './pages/Home/Home'
 import { WorkspaceLayout } from './pages/Workspace/Layout'
 import { JoinPage } from './pages/Workspace/JoinPage'
-import Channel from './components/atoms/UserItem/Channel/Channel'
+import Channel from './pages/Channel/Channel'
 
 const AppRoutes = () => {
     return (
