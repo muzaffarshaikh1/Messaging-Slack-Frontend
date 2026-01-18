@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-
+import 'quill/dist/quill.snow.css';
 import Quill from 'quill';
 
 const Editor = ({
@@ -71,6 +71,9 @@ const Editor = ({
         <div ref={containerRef}>
         </div>
       </div>
+      <p className='p-2 text-[10px] text-muted-foreground flex justify-end'>
+        <strong>Shift + return </strong> to add new line
+      </p>
     </div>
   )
 }
