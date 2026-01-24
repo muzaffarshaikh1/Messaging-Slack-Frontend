@@ -137,7 +137,7 @@
 }
 
 .ql-container{
-  border: none;
+  border: none !important;
   height: unset !important;
   font-family: 'Lato',sans-serif !important;
 }
