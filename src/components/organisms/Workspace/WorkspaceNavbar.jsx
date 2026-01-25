@@ -1,23 +1,36 @@
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/hooks/apis/auth/context/useAuth';
 import { useCurrentWorkspace } from '@/hooks/apis/workspace/context/useCurrentWorkspace';
 import { useGetWorkspaceById } from '@/hooks/apis/workspace/useGetWorkspaceById';
 import { InfoIcon, LucideLoader2, SearchIcon } from 'lucide-react';
 import { useEffect } from 'react';
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 
 const WorkspaceNavbar = () => {
 
     const {workspaceId} = useParams();
 
     const {setCurrentWorkspace} = useCurrentWorkspace();
-
-    const {isFetching, workspace} = useGetWorkspaceById(workspaceId);
+    const navigate = useNavigate();
+    const {logout} = useAuth();
+    const {isFetching, workspace, error, isSuccess} = useGetWorkspaceById(workspaceId);
 
     useEffect(() => {
+        
+        if(!isFetching && !isSuccess && error){
+            console.log("Error Fetching workspace",error);
+            console.log(error?.status == 403)
+            console.log(error)
+            if(error.status == 403){
+                logout();
+                navigate('/auth/signin');
+            }
+        }
+
         if(workspace){
             setCurrentWorkspace(workspace);
         }
-    }, [workspace,setCurrentWorkspace])
+    }, [workspace,setCurrentWorkspace,error,isSuccess, isFetching])
   
 
     if(isFetching){

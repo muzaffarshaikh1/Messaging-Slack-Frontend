@@ -17,11 +17,11 @@ const Home = () => {
     
     console.log("workspaces",workspaces);
     
-    if(workspaces.length == 0 || !workspaces){
+    if(workspaces?.length == 0 || !workspaces){
       setOpenCreateWorkspaceModal(true);
       console.log("no workspaces found creating one");
     }else{
-      navigate(`/workspaces/${workspaces[0]._id}`)
+      navigate(`/workspaces/${workspaces[0]?._id}`)
     }
 
   }, [isFetching,workspaces,navigate])
