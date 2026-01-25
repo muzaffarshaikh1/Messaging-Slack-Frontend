@@ -1,0 +1,39 @@
+import MessageRenderer from '@/components/atoms/MessageRenderer/MessageRenderer'
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
+import { AvatarFallback } from '@radix-ui/react-avatar'
+import React from 'react'
+
+const Message = ({authorImage,authorName,createdAt,body}) => {
+  return (
+    <div className="flex flex-col gap-2 p-1.5 px-5 hover:bg-gray-100/60 group relative">
+        <div className="flex items-center gap-2">
+            <button>
+                <Avatar>
+                    <AvatarImage className="rounded-md" src={authorImage} />
+                    <AvatarFallback className='rounded-md bg-sky-500 text-white text-sm' >
+                        {authorName.charAt(0).toUpperCase()}
+                    </AvatarFallback>
+                </Avatar>
+            </button>
+
+            <div className="flex flex-col w-full overflow-hidden">
+                <div className="text-xs">
+                    <button className='font-bold text-primary hover:underline'>
+                        {authorName}
+                    </button>
+                    <span>&nbsp;&nbsp;</span>
+                    <button
+                        className='text-sm text-muted-foreground'
+                    >
+                        {createdAt}
+                    </button>
+                </div>
+                <MessageRenderer value={body} />
+                {/* any images if there are */}
+            </div>
+        </div>
+    </div>
+  )
+}
+
+export default Message
