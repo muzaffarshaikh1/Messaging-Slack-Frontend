@@ -1,6 +1,8 @@
 import ChannelHeader from '@/components/molecules/Channel/ChannelHeader';
 import { ChatInput } from '@/components/molecules/ChatInput/ChatInput';
+import Message from '@/components/molecules/Message/Message';
 import { useGetChannelById } from '@/hooks/apis/channel/useGetChannelById';
+import { useGetChannelMessages } from '@/hooks/apis/channel/useGetChannelMessages';
 import { useSocket } from '@/hooks/apis/useSocket';
 import { Loader2Icon, Triangle, TriangleAlertIcon } from 'lucide-react';
 import React, { useEffect } from 'react'
@@ -11,15 +13,18 @@ const Channel = () => {
 
   const { channelDetails, isFetching, error } = useGetChannelById(channelId);
 
-  const {joinChannel} = useSocket();
+  const { joinChannel } = useSocket();
+
+  const { messages} = useGetChannelMessages(channelId);
+
+  console.log("messages:", messages, Array.isArray(messages));
 
 
-
-  useEffect(()=>{
-    if(!isFetching && !error){
+  useEffect(() => {
+    if (!isFetching && !error) {
       joinChannel(channelId);
     }
-  },[isFetching,error,joinChannel,channelId]);
+  }, [isFetching, error, joinChannel, channelId]);
 
   if (isFetching) {
     return (
@@ -39,11 +44,16 @@ const Channel = () => {
   }
 
   return (
-    <div  className='flex flex-col h-full' >
+    <div className='flex flex-col h-full' >
       <ChannelHeader name={channelDetails?.name} />
-      <div className="flex-1"/>
-      <ChatInput/>
-      </div>
+      {messages && messages.messages?.map((message) => {
+        return <Message key={message._id} body={message.body} authorImage={message.senderId?.avatar}
+          authorName={message.senderId?.username} createdAt={message.createdAt} />
+      })}
+      {/* {messages && JSON.stringify(messages)} */}
+      <div className="flex-1" />
+      <ChatInput />
+    </div>
   )
 }
 

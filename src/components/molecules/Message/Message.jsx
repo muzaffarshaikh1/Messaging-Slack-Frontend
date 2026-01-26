@@ -25,7 +25,7 @@ const Message = ({authorImage,authorName,createdAt,body}) => {
                     <button
                         className='text-sm text-muted-foreground'
                     >
-                        {createdAt}
+                        {createdAt || 'just now'}
                     </button>
                 </div>
                 <MessageRenderer value={body} />
